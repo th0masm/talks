@@ -1,8 +1,38 @@
+## #mylife
+
+- Doctorat autour l'algorithmique distribuée (asynchrone) :
+  - [ViSiDiA](http://visidia.labri.fr/html/home.html) : plateforme de simulation en Java
+  - asynchrone ?
+- Ingénieur R&D @Linagora :
+  - Projets FP7 ([Play](http://www.play-project.eu/)) et ANR ([SocEDA](http://www.soceda.org/))
+  - Java (backend et frontend) : GWT et Play Framework
+
+ &nbsp;
+
+-> développeur java orienté backend principalement
+%%%
+
+## Projet OpenPaaS RSE
+
+- Réseau social à destination entreprises,
+  - contraintes temps réel : notification, visioconférence, asynchronisme.
+
+- Développement en JavaScript : Node.js
+  - Express (backend)
+  - Angular (frontend)
+
+%%%
+
 ## Node.js
 
-- Javascript coté serveur
-- Asynchrone
-- Moteur v8 de Chrome
+- Javascript coté serveur,
+- Asynchrone,
+- Moteur v8 de Chrome,
+- Hors navigateur.
+
+ &nbsp;
+
+-> JavaScript : **trending** langage sur GitHub (devant Java)
 
 %%%
 
@@ -13,225 +43,226 @@ Node.js uses an event-driven, non-blocking I/O model that makes it lightweight a
 
 %%%
 
-# Let's hack
+## Qualités de Node.js
 
-- Node!
-- Un drone
-- De la chance (ou des $$$)
-
-%%%
-
-## Décollage!
-
-```
-bash-3.2$ npm install ar-drone
-```
-
-```
-var arDrone = require('ar-drone');
-var client  = arDrone.createClient();
-
-client.takeoff();
-
-client
-  .after(5000, function() {
-    this.clockwise(0.5);
-  })
-  .after(3000, function() {
-    this.stop();
-    this.land();
-  });
-
-```
+- Performance,
+- Programmation non-itérative donc non bloquante,
+- Portabilité (backend, frontend),
+- Gestionnaire de paquets puissant (npm),
+- Communauté active.
 
 %%%
 
-# Drone as a Service
+## Écosystème Node.js
+
+- gestionnaire de modules backend : NPM,
+- gestionnaire de modules frontend : Bower,
+- frameworks : Express, Angular, Jade, Socket.io, Mocha, Grunt...
 
 %%%
 
-## Express.js FTW!
+## Références en production
+
+- Paypal (KrakenJS),
+- Ebay (ql.io),
+- LinkedIn (Mobile),
+- Yahoo! (Cocktails),
+- Mozilla
+- ...
+
+%%%
+
+## Pas de problème !
+
+- JavaScript/Node.js ? pas de problème j'utilise JQuery,
+- Javascript/Angular ? pas de problème j'utilise déjà Bootstrap,
+- Ce n'est pas typé ! pas de problème, je gère en PHP et Bash.
+
+%%%
+
+## Prise de contact
+
+- Utiliser JQuery != être compétent en JS,
+- Compter 4 à 5 mois pour dompter les subtilités de Node.js,
+- Langage non typé mais on peut faire de l'objet...
+
+---
+ &nbsp;
+
+-> mais alors, dans quel pétrin me suis-je mis ?
+
+%%%
+
+## 1re Tentative(s), 1er Échec(s) : Async !
 
 ```
-bash-3.2$ npm install express
-```
+var my_client = new Client('myApp');
+var member = null;
 
-```
-var arDrone = require('ar-drone');
-var client  = arDrone.createClient();
-
-var express = require('express');
-var app = express();
-
-app.get('/drone/takeoff', function(req, res) {
-  drone.takeOff();
+my_client.get('/member/'+ id, function(err, res){
+  if(err){
+    error(err.msg);
+  }
+  member = res.member;
 });
 
-app.get('/drone/land', function(req, res) {
-  drone.land();
-});
-```
-
-%%%
-
-# Capteurs!
-
-%%%
-
-## Camera
-
-```
-drone.createPngStream().on('data', function(frame) {
-  // ...
-});
-```
-
-%%%
-
-## Video
-
-```
-// Server side
-var dronestream = require('dronestream');
-// ...
-var http = require('http');
-var server = http.createServer(app);
-dronestream.listen(server);
-```
-
-``` 
-<!-- Client side -->
-var stream = new NodecopterStream(document.getElementById('stream'));
-```
-
-%%%
-
-## Données de navigation
-
-```
-var client = require('ar-drone').createClient();
-client.config('general:navdata_demo', 'TRUE');
-
-client.on('navdata', function(data) {
-  console.log('NAVDATA :: ', data);
-});
-```
-
-%%%
-
-## Websockets?
-
-```
-      -------                 ------                  -----
-    | browser | <---------> | server | <----------> | drone |
-      -------                 ------                  -----
-```
-
-%%%
-
-## Socket.io rocks!
-
-**Socket.IO enables real-time bidirectional event-based communication.
-It works on every platform, browser or device, focusing equally on reliability and speed.**
-
-%%%
-
-```
-bash-3.2$ npm install socket.io
-```
-
-```
-var sio = io.listen(server);
-sio.set('destroy upgrade', false);
-sio.sockets.on('connection', function (socket) {
-  console.log('New Socket.IO connection');
-
-  client.on('navdata', function(data) {
-    console.log('NAVDATA :: ', data);
-    socket.emit('navdata', data);
-  });
-
-  socket.on('disconnect', function () {
-    console.log('Socket.IO is now disconnected');
-  });
-});
-```
-
-%%%
-
-<img class="stretch" src="./img/epoch.png"/>
-
-%%%
-
-# S'intégrer avec le monde extérieur...
-
-%%%
-
-# Twitter!
-
-%%%
-
-### Faire décoller le drone grace à un tweet
-
-```
-bash-3.2$ npm install twitt
-```
-
-```
-var Twitter = require('twit');
-var twiter = new Twitter({/*API KEYS*/});
-
-var stream = twitter.stream('/statuses/filter', {track: 'yolo'});
-
-stream.on('tweet', function(tweet) {
-  console.log('Got a tweet', tweet);
-  if (isValid(tweet)) {
-    drone.takeOff();
+my_client.updateMember(member.id, 'toto', function(res, err){
+  if(err){
+    error(err.msg);
   }
 });
+
 ```
 
 %%%
 
-<img class="stretch" src="./img/takeofftweet.png"/>
+## 2ème Tentative(s), 2ème Échec(s) : Callback !
+
+Quelque part côté backend...
+
+```
+function load(id, callback) {
+  if (!id) {
+    callback(new Error('Domain id is required'));
+  }
+  Domain.findOne({_id: id}, callback);
+}
+
+```
+%%%
+
+## 3ème Tentative(s), Brain Fuck !
+
+```
+my_client.get('/member/'+ id, function(err, res){
+  if(err){
+    error(err.msg);
+  }
+  my_client.updateMember(res.member.id, 'toto', function(res, err){
+    if(err){
+      error(err.msg);
+    }
+    my_client.XXX(..., function(...){
+      my_client.YYY(..., function(...){
+
+      }):
+    });
+  });
+});
+```
 
 %%%
 
-# La partie la plus risquée du talk
-## (Surtout pour le premier rang)
+## Quelques amis
+
+- Google (évidemment),
+- ```console.log('Je passe ici !');``
+- node-inspector : debugger JS (Chrome)
+  - breackpoints,
+  - stracktraces (tiens donc !),
+  - console.
+
+%%%
+<img src="./img/debugger.png"/>
+
+ &nbsp;
 
 %%%
 
+## Promesses
+
+- Construire une suite d’actions (synchrones/asynchrones),
+- Interrompre la suite si erreur sur une action,
+- Compléter la suite même si erreur,
+- Synchroniser plusieurs résultats asynchrones.
+
+
+%%%
+
+## Promesses (Exemple)
 ```
-bash-3.2$ npm install ardrone-autonomy
+my_client.get('/member/id')
+  .then(function(member){
+    displayProfile(member);
+    return my_client.get(member.avatar);
+  }).then(function(avatar){
+    displayAvatar(avatar);
+  }).catch(function(err){
+    error(err.msg);
+  }).finally(function(){
+    my_client.close();
+  }).done();
+};
 ```
+%%%
+
+## Async.js
 
 ```
-mission.takeoff()
-  .zero()
-  .altitude(1)
-  .hover(10000)
-  .forward(1)
-  .hover(10000)
-  .taskSync(function() {
-    console.log('Beer delivered!');
-  })
-  .cw(180)
-  .go({x:0, y:0})
-  .ccw(180)
-  .hover(1000)
-  .land();
+async.waterfall(
+  [
+    function(callback) {
+       fs.readFile(A, callback);
+    },
+    function(contentA, callback) {
+       fs.readFile(B, function(err, contenuB) {
+          callback(err, contentA, contentB);
+       });
+    },
+    function(contentA, contentB, callback) {
+       fs.writeFile(C, contentA + contentB, callback);
+    },
+  ],
+  function(err) { console.log(err.msg); }
+);
 ```
 
 %%%
 
-# Cheese!!!
+## Java 1 - 0 Node.js
+
+- Node.js manque (encore) de standards de dév. :
+  - **norme** projet from-scratch : [Yeoman](yeoman.io) (yo, grunt, bower),
+  - tests : mocks difficiles ([mockery](https://github.com/mfncooper/mockery)).
+- Node.js reste moins éprouvé que Java (et JEE),
+- Equipe réduite :
+  - OpenPaaS : environ 5 dév. JS,
+  - Modules très souvents interdépendants.
 
 %%%
 
-# WTF?
+## Java 1 - 1 Node.js
 
-- [Livrer de la drogue en prison](http://www.lefigaro.fr/international/2014/06/26/01003-20140626ARTFIG00155-un-drone-transportant-de-la-drogue-s-ecrase-dans-une-prison-de-dublin.php)
+- Communauté :
+  - jeune mais très active,
+  - partage, collaboration (GitHub),
+  - diffusion (NPM vs. Maven).
+- Framework frontend et backend,
+- Réinvention de la roue,
+- ...
+
+%%%
+
+## Objectivement
+
+Le choix de Node.js doit être pesé :
+
+ - expérience utilisateur : temps réel ?
+ - temps de calcul : calculs importants ?
+ - exposition d'un API : multiplateforme et ouverture ?
+ - nombre d'utilisateur : notion de bigdata ?
+ - compétences développeur : JS-Master ? UI-designer ?
+ - imposer une méthode de développement stricte : Scrum ?
+
+%%%
+
+## Subjectivement : Java 1 - 2 Node.js
+
+- Javascript <3,
+- JS côté serveur et client (vs. Java/JSP),
+- Asynchronisme (difficile en Java),
+- Temps-réel socket.io (en Java ?)
+
 
 %%%
 
