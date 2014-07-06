@@ -76,7 +76,8 @@ Node.js uses an event-driven, non-blocking I/O model that makes it lightweight a
 
 - JavaScript/Node.js ? pas de problème j'utilise JQuery,
 - Javascript/Angular ? pas de problème j'utilise déjà Bootstrap,
-- Ce n'est pas typé ! pas de problème, je gère en PHP et Bash.
+- Ce n'est pas typé ! pas de problème, je gère en PHP et Bash,
+- Templating ? pas de problème, je connais Smarty.
 
 %%%
 
@@ -224,6 +225,9 @@ async.waterfall(
 - Node.js manque (encore) de standards de dév. :
   - **norme** projet from-scratch : [Yeoman](yeoman.io) (yo, grunt, bower),
   - tests : mocks difficiles ([mockery](https://github.com/mfncooper/mockery)).
+
+<img style="border: none; align:right;" height="140px" src="./img/yeoman-logo.png"/>
+
 - Node.js reste moins éprouvé que Java (et JEE),
 - Equipe réduite :
   - OpenPaaS : environ 5 dév. JS,
@@ -241,11 +245,20 @@ async.waterfall(
 - Réinvention de la roue,
 - ...
 
+&nbsp;
+
+<img style="border: none; align:right;" height="130px" src="./img/angular-logo.png"/>
+<img style="border: none; align:right;" height="130px" src="./img/bower-logo.png"/>
+<img style="border: none; align:right;" height="130px" src="./img/npm-logo.png"/>
+<img style="border: none; align:right;" height="130px" src="./img/grunt-logo.png"/>
+
 %%%
 
 ## Objectivement
 
 Le choix de Node.js doit être pesé :
+
+&nbsp;
 
  - expérience utilisateur : temps réel ?
  - temps de calcul : calculs importants ?
@@ -261,7 +274,14 @@ Le choix de Node.js doit être pesé :
 - Javascript <3,
 - JS côté serveur et client (vs. Java/JSP),
 - Asynchronisme (difficile en Java),
-- Temps-réel socket.io (en Java ?)
+- Temps-réel socket.io (en Java ?),
+- Prototypage rapide : couple Angular/Bootstrap.
+
+%%%
+
+## Perpectives ?
+
+<img src="./img/farewell.png"/>
 
 
 %%%
@@ -270,7 +290,7 @@ Le choix de Node.js doit être pesé :
 
 - [@tmorsellino](http://twitter.com/tmorsellino)
 - [https://github.com/linagora/openpaas-rse](https://github.com/linagora/openpaas-rse)
-- [Slides](http://chamerling.github.io/slides/content/rmll14-fr/)
+- [Slides](https://github.com/th0masm/talks/tree/master/content/rmll14-fr)
 - [Linagora](http://linagora.com)
 - [Linagora Labs](http://research.linagora.com)
 
