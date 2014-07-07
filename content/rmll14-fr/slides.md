@@ -9,21 +9,22 @@
 
  &nbsp;
 
--> développeur java orienté backend principalement
+> -> développeur java orienté backend principalement
 %%%
 
 ## Projet OpenPaaS RSE
 
-- Réseau social à destination entreprises,
-  - contraintes temps réel : notification, visioconférence, asynchronisme.
-
-- Développement en JavaScript : Node.js
-  - Express (backend)
-  - Angular (frontend)
+- Réseau social à destination des entreprises,
+  - contraintes temps réel : notification, visioconférence, recommandations.
+- Développement  full-JS : Node.js
+  - Express (backend),
+  - Angular (frontend),
+  - Mocha (test),
+  - Grunt (tâches)
 
 %%%
 
-## Node.js
+## Découverte de Node.js
 
 - Javascript coté serveur,
 - Asynchrone,
@@ -43,12 +44,11 @@ Node.js uses an event-driven, non-blocking I/O model that makes it lightweight a
 
 %%%
 
-## Qualités de Node.js
+## Qualités vantées de Node.js
 
 - Performance,
 - Programmation non-itérative donc non bloquante,
 - Portabilité (backend, frontend),
-- Gestionnaire de paquets puissant (npm),
 - Communauté active.
 
 %%%
@@ -74,10 +74,10 @@ Node.js uses an event-driven, non-blocking I/O model that makes it lightweight a
 
 ## Pas de problème !
 
-- JavaScript/Node.js ? pas de problème j'utilise JQuery,
-- Javascript/Angular ? pas de problème j'utilise déjà Bootstrap,
-- Ce n'est pas typé ! pas de problème, je gère en PHP et Bash,
-- Templating ? pas de problème, je connais Smarty.
+- *JavaScript/Node.js ?* -> pas de problème j'utilise JQuery,
+- *Javascript/Angular ?* -> pas de problème j'utilise déjà Bootstrap,
+- *Ce n'est pas typé !* -> pas de problème, je gère en PHP et Bash,
+- *Templating ?* -> pas de problème, je connais Smarty.
 
 %%%
 
@@ -90,7 +90,12 @@ Node.js uses an event-driven, non-blocking I/O model that makes it lightweight a
 ---
  &nbsp;
 
--> mais alors, dans quel pétrin me suis-je mis ?
+> mais alors, **dans quel pétrin me suis-je lancé** ?
+
+%%%
+<img height="500px" src="./img/challenge.png"/>
+
+&nbsp;
 
 %%%
 
@@ -157,7 +162,7 @@ my_client.get('/member/'+ id, function(err, res){
 ## Quelques amis
 
 - Google (évidemment),
-- ```console.log('Je passe ici !');``
+- ``console.log('Je passe ici !');``
 - node-inspector : debugger JS (Chrome)
   - breackpoints,
   - stracktraces (tiens donc !),
